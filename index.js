@@ -5,10 +5,12 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-origin: "https://ai-chatbot-frontend-ten-woad.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: "https://ai-chatbot-frontend-ten-woad.vercel.app", 
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+app.options("*", cors());
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));

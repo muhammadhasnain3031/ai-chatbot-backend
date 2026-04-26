@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-  origin: "https://chat-app-frontend-peach-two.vercel.app",
+origin: "https://your-new-frontend-vercel-link.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));

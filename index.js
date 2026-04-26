@@ -4,13 +4,15 @@ const cors     = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({
-  origin: "https://ai-chatbot-frontend-ten-woad.vercel.app", 
+const corsOptions = {
+  origin: "https://ai-chatbot-frontend-ten-woad.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-}));
-app.options("*", cors());
+  credentials: true,
+  optionsSuccessStatus: 200 // Ye line "HTTP ok status" wala masla hal karegi
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
